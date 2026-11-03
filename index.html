@@ -1,0 +1,1242 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8f0df">
+<title>Jornada Modernista | Tarsila do Amaral</title>
+
+<style>
+:root {
+    color-scheme: light;
+    --bg: #f8f0df;
+    --surface: #fffdf7;
+    --text: #263a2c;
+    --muted: #667266;
+    --green: #214c35;
+    --green-hover: #326a49;
+    --border: #e6dfce;
+    --soft: #edf1e5;
+    --shadow: 0 8px 28px #283b2810;
+    --modal-overlay: #10271dd9;
+}
+
+body.dark {
+    color-scheme: dark;
+    --bg: #151e19;
+    --surface: #202d25;
+    --text: #f2f0e6;
+    --muted: #c0c9bd;
+    --green: #a4d2a9;
+    --green-hover: #c2e5c5;
+    --border: #3a4a3e;
+    --soft: #2d4033;
+    --shadow: 0 8px 28px #00000025;
+    --modal-overlay: #080f0bdc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background .25s, color .25s;
+}
+
+button, a {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #e7ae45;
+    outline-offset: 4px;
+}
+
+a {
+    color: inherit;
+}
+
+/* CABEÇALHO COM A OBRA OPERÁRIOS */
+
+header {
+    position: relative;
+    overflow: hidden;
+    padding: 24px 7% 55px;
+    background:
+        linear-gradient(
+            rgba(23, 53, 38, 0.65),
+            rgba(23, 53, 38, 0.65)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Oper%C3%A1rios%2C_Trasila_do_Amaral_-_1933.jpg")
+        center 42% / cover no-repeat;
+}
+
+.topbar {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    background: #214c35;
+    color: #fffdf7;
+    padding: 10px 17px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: .5px;
+}
+
+.top-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    width: 43px;
+    height: 43px;
+    border: 1px solid #ffffffb0;
+    border-radius: 50%;
+    background: #214c35;
+    color: white;
+    font-size: 20px;
+    transition: transform .2s;
+}
+
+.icon-btn:hover {
+    transform: translateY(-3px);
+}
+
+.hero {
+    max-width: 1250px;
+    margin: 52px auto 0;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items: center;
+    gap: 45px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-label {
+    display: inline-block;
+    background: #fff7e4e8;
+    color: #214c35;
+    border: 1px solid #ffffff;
+    padding: 7px 15px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    color: #fffdf7;
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 5.5vw, 76px);
+    line-height: 1.04;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #f5c653;
+}
+
+.hero-copy > p {
+    color: #fffdf0;
+    max-width: 570px;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.start-btn {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 30px;
+    background: #214c35;
+    color: white;
+    padding: 14px 25px;
+    font-weight: bold;
+    box-shadow: 0 5px 0 #173723;
+    transition: transform .2s, background .2s;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    background: #326a49;
+}
+
+.hero-note {
+    display: block;
+    color: #fffdf0;
+    font-size: 12px;
+    margin-top: 17px;
+}
+
+/* RETRATO */
+
+.portrait-wrap {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 340px);
+    padding: 12px;
+    background: #fff9e9;
+    border-radius: 180px 180px 24px 24px;
+    box-shadow: 12px 14px 0 #214c3524;
+    transform: rotate(2deg);
+}
+
+.portrait-wrap img {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center 25%;
+    border-radius: 170px 170px 16px 16px;
+    background: #e4d8bd;
+}
+
+.portrait-caption {
+    text-align: center;
+    color: #214c35;
+    font-size: 12px;
+    padding: 12px 4px 4px;
+}
+
+.decor-circle {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #e98679;
+    border-radius: 50%;
+    right: -27px;
+    bottom: 65px;
+    z-index: -1;
+}
+
+.decor-leaf {
+    position: absolute;
+    width: 55px;
+    height: 95px;
+    background: #39744c;
+    border-radius: 100% 0 100% 0;
+    left: -35px;
+    top: 90px;
+    transform: rotate(-25deg);
+    z-index: -1;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 45px 22px 60px;
+}
+
+.welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    color: #bd7950;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.welcome h2,
+.section-title,
+.about-box h2 {
+    color: var(--text);
+    font-family: Georgia, serif;
+}
+
+.welcome h2 {
+    font-size: clamp(27px, 4vw, 38px);
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.welcome p {
+    color: var(--muted);
+}
+
+.progress-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 17px 20px;
+    min-width: 220px;
+    box-shadow: var(--shadow);
+}
+
+.progress-card strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.progress-card p {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 8px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--border);
+}
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+    background: #5e9b69;
+    border-radius: inherit;
+    transition: width .3s;
+}
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-size: 29px;
+    margin-bottom: 5px;
+}
+
+.section-description {
+    color: var(--muted);
+}
+
+/* MINIGAMES */
+
+.games {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 23px;
+}
+
+.game-card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: transform .25s, box-shadow .25s;
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px #00000012;
+}
+
+.game-art {
+    height: 155px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-art::before,
+.game-art::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: #ffffff45;
+}
+
+.game-art::before {
+    width: 150px;
+    height: 150px;
+    right: -35px;
+    top: -50px;
+}
+
+.game-art::after {
+    width: 95px;
+    height: 95px;
+    left: -25px;
+    bottom: -35px;
+}
+
+.art-yellow { background: #f2c552; }
+.art-pink { background: #e9857b; }
+.art-green { background: #91bd80; }
+.art-purple { background: #b3a0d8; }
+.art-blue { background: #83c4d2; }
+.art-orange { background: #edaa67; }
+
+.game-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 65px;
+    filter: drop-shadow(0 5px 2px #00000015);
+    transition: transform .25s;
+}
+
+.game-card:hover .game-icon {
+    transform: scale(1.1) rotate(-4deg);
+}
+
+.game-content {
+    padding: 21px;
+}
+
+.game-content h3 {
+    color: var(--text);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.game-content p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 72px;
+}
+
+.game-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 17px 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.tag {
+    display: inline-block;
+    background: var(--soft);
+    color: var(--text);
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.play-btn {
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 30px;
+    background: #214c35;
+    color: white;
+    font-weight: bold;
+    transition: background .2s;
+}
+
+.play-btn:hover {
+    background: #39744c;
+}
+
+/* SOBRE O PROJETO */
+
+.about {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 23px;
+    margin-top: 50px;
+}
+
+.about-box {
+    min-width: 0;
+    padding: 27px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.about-box h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.about-box p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.art-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.fact {
+    padding: 16px;
+    border-radius: 13px;
+    background: var(--soft);
+}
+
+.fact strong {
+    display: block;
+    color: #bd7950;
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+.fact span {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* JANELA DO MINIGAME */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: var(--modal-overlay);
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 32px;
+    border-radius: 23px;
+    background: var(--surface);
+    color: var(--text);
+    text-align: center;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 70px #00000030;
+    animation: appear .22s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(.96) translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-icon {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+.modal-box h2 {
+    margin-bottom: 12px;
+    font-family: Georgia, serif;
+}
+
+.modal-box p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.modal-status {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 28px;
+    padding: 0 5px;
+}
+
+.modal .start-btn {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.secondary-btn {
+    border: 0;
+    padding: 12px;
+    margin-top: 8px;
+    color: var(--text);
+    background: transparent;
+}
+
+.secondary-btn:hover {
+    text-decoration: underline;
+}
+
+/* RODAPÉ */
+
+footer {
+    padding: 30px 20px;
+    text-align: center;
+    background: #214c35;
+    color: #fffdf7;
+    line-height: 1.9;
+}
+
+footer h3 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+footer p {
+    color: #e2ebdf;
+    font-size: 14px;
+}
+
+footer a {
+    display: inline-block;
+    color: #f5c653;
+    margin-top: 8px;
+}
+
+/* MODO ESCURO */
+
+body.dark header {
+    background:
+        linear-gradient(
+            rgba(10, 20, 14, 0.78),
+            rgba(10, 20, 14, 0.78)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Oper%C3%A1rios%2C_Trasila_do_Amaral_-_1933.jpg")
+        center 42% / cover no-repeat;
+}
+
+body.dark .portrait-wrap {
+    background: #e6d9bc;
+}
+
+body.dark .hero-label {
+    background: #f8f0df;
+}
+
+body.dark .eyebrow {
+    color: #e4ae83;
+}
+
+body.dark .fact strong {
+    color: #e4ae83;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr .75fr;
+        gap: 25px;
+    }
+
+    .portrait-wrap img {
+        height: 290px;
+    }
+
+    .games {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 20px 17px 42px;
+        background-position: center;
+    }
+
+    .logo {
+        font-size: 11px;
+        padding: 10px 12px;
+    }
+
+    .icon-btn {
+        width: 39px;
+        height: 39px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        margin-top: 38px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .hero-copy > p {
+        font-size: 15px;
+    }
+
+    .portrait-wrap {
+        width: 230px;
+        margin-top: 15px;
+    }
+
+    .portrait-wrap img {
+        height: 250px;
+    }
+
+    .decor-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    main {
+        padding: 32px 15px 45px;
+    }
+
+    .games {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .game-art {
+        height: 145px;
+    }
+
+    .game-content p {
+        min-height: 0;
+    }
+
+    .welcome {
+        align-items: stretch;
+    }
+
+    .progress-card {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+    .about-box {
+        padding: 21px;
+    }
+
+    .modal-box {
+        padding: 28px 20px 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header id="topo">
+    <nav class="topbar" aria-label="Menu principal">
+        <div class="logo">🎨 JORNADA MODERNISTA</div>
+
+        <div class="top-actions">
+            <button class="icon-btn" id="aboutButton"
+                    aria-label="Ir para sobre o projeto"
+                    title="Sobre o projeto">ⓘ</button>
+
+            <button class="icon-btn" id="themeButton"
+                    aria-label="Ativar modo escuro"
+                    aria-pressed="false"
+                    title="Alternar tema">☾</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-copy">
+            <div class="hero-label">Uma aventura pela arte brasileira</div>
+
+            <h1>Jornada <span>Modernista</span></h1>
+
+            <p>
+                Entre em um universo de cores, formas e descobertas.
+                Conheça a trajetória de Tarsila do Amaral e teste seus
+                conhecimentos em desafios inspirados no Modernismo brasileiro.
+            </p>
+
+            <button class="start-btn" id="startButton">
+                ✨ Iniciar jornada <span aria-hidden="true">→</span>
+            </button>
+
+            <span class="hero-note">
+                Explore os jogos no seu ritmo e descubra a arte brasileira.
+            </span>
+        </div>
+
+        <div class="portrait-wrap">
+            <span class="decor-circle"></span>
+            <span class="decor-leaf"></span>
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Tarsila_do_Amaral%2C_ca._1925.jpg"
+                alt="Retrato histórico de Tarsila do Amaral, por volta de 1925"
+                loading="eager"
+                onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Tarsila_%28cropped%29.jpg';"
+            >
+
+            <div class="portrait-caption">
+                Tarsila do Amaral · retrato histórico, c. 1925
+            </div>
+        </div>
+    </section>
+</header>
+
+<main>
+    <section class="welcome">
+        <div>
+            <div class="eyebrow">Sua aventura começa aqui</div>
+            <h2>Qual será seu próximo desafio?</h2>
+            <p>Escolha um minigame e descubra algo novo sobre a artista.</p>
+        </div>
+
+        <div class="progress-card">
+            <strong>🏆 Sua jornada</strong>
+            <p><span id="played">0</span> de 6 minigames visitados</p>
+
+            <div class="progress-bar"
+                 role="progressbar"
+                 aria-label="Progresso dos minigames visitados"
+                 aria-valuemin="0"
+                 aria-valuemax="6"
+                 aria-valuenow="0"
+                 id="progressBar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="minigames">
+        <div class="section-heading">
+            <h2 class="section-title">🎮 Sala dos minigames</h2>
+            <p class="section-description">
+                Cada jogo é uma nova oportunidade de aprender brincando.
+            </p>
+        </div>
+
+        <div class="games">
+
+            <article class="game-card">
+                <div class="game-art art-yellow">
+                    <span class="game-icon" aria-hidden="true">🖼️</span>
+                </div>
+                <div class="game-content">
+                    <h3>Acerte a Pintura</h3>
+                    <p>Observe as pinturas e descubra o título correto de cada obra.</p>
+                    <div class="game-info">
+                        <span class="tag">Fácil</span>
+                        <span>🎯 Conhecimento</span>
+                    </div>
+                    <button class="play-btn" data-game="0">Conhecer jogo →</button>
+                </div>
+            </article>
+
+            <article class="game-card">
+                <div class="game-art art-pink">
+                    <span class="game-icon" aria-hidden="true">🃏</span>
+                </div>
+                <div class="game-content">
+                    <h3>Jogo da Memória</h3>
+                    <p>Encontre pares de cartas com imagens e referências à arte modernista.</p>
+                    <div class="game-info">
+                        <span class="tag">Fácil</span>
+                        <span>🧠 Memória</span>
+                    </div>
+                    <button class="play-btn" data-game="1">Conhecer jogo →</button>
+                </div>
+            </article>
+
+            <article class="game-card">
+                <div class="game-art art-green">
+                    <span class="game-icon" aria-hidden="true">❓</span>
+                </div>
+                <div class="game-content">
+                    <h3>Quiz das Obras</h3>
+                    <p>Responda perguntas sobre a vida, as pinturas e o Modernismo brasileiro.</p>
+                    <div class="game-info">
+                        <span class="tag">Intermediário</span>
+                        <span>📚 História</span>
+                    </div>
+                    <button class="play-btn" data-game="2">Conhecer jogo →</button>
+                </div>
+            </article>
+
+            <article class="game-card">
+                <div class="game-art art-purple">
+                    <span class="game-icon" aria-hidden="true">📅</span>
+                </div>
+                <div class="game-content">
+                    <h3>Linha do Tempo</h3>
+                    <p>Organize acontecimentos importantes da trajetória de Tarsila.</p>
+                    <div class="game-info">
+                        <span class="tag">Intermediário</span>
+                        <span>⏳ Cronologia</span>
+                    </div>
+                    <button class="play-btn" data-game="3">Conhecer jogo →</button>
+                </div>
+            </article>
+
+            <article class="game-card">
+                <div class="game-art art-blue">
+                    <span class="game-icon" aria-hidden="true">🧩</span>
+                </div>
+                <div class="game-content">
+                    <h3>Pintura Quebrada</h3>
+                    <p>Reorganize as peças para reconstruir uma imagem inspirada na arte modernista.</p>
+                    <div class="game-info">
+                        <span class="tag">Intermediário</span>
+                        <span>🧩 Raciocínio</span>
+                    </div>
+                    <button class="play-btn" data-game="4">Conhecer jogo →</button>
+                </div>
+            </article>
+
+            <article class="game-card">
+                <div class="game-art art-orange">
+                    <span class="game-icon" aria-hidden="true">🔎</span>
+                </div>
+                <div class="game-content">
+                    <h3>Detetive da Arte</h3>
+                    <p>Use pistas sobre cores, formas e história para identificar uma obra misteriosa.</p>
+                    <div class="game-info">
+                        <span class="tag">Desafiador</span>
+                        <span>🔍 Investigação</span>
+                    </div>
+                    <button class="play-btn" data-game="5">Conhecer jogo →</button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="about" id="sobre">
+        <div class="about-box">
+            <h2>🌻 Uma viagem pela arte brasileira</h2>
+            <p>
+                Tarsila do Amaral (1886–1973) foi uma das principais
+                artistas do Modernismo brasileiro. Sua produção apresenta
+                cores expressivas, formas marcantes e temas ligados à
+                cultura e à sociedade brasileira.
+            </p>
+            <p>
+                Nesta jornada, você vai conhecer obras, explorar momentos
+                da trajetória da artista e aprender por meio de atividades
+                interativas.
+            </p>
+            <p><strong>Observe, investigue e descubra!</strong></p>
+        </div>
+
+        <div class="about-box">
+            <h2>📖 Sua missão</h2>
+            <div class="art-facts">
+                <div class="fact">
+                    <strong>06</strong>
+                    <span>Minigames disponíveis no menu</span>
+                </div>
+                <div class="fact">
+                    <strong>🎨</strong>
+                    <span>Arte e cultura brasileira</span>
+                </div>
+                <div class="fact">
+                    <strong>🧠</strong>
+                    <span>Conhecimento e raciocínio</span>
+                </div>
+                <div class="fact">
+                    <strong>🏆</strong>
+                    <span>Novas descobertas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <h3>Jornada Modernista</h3>
+    <p>Arte, cultura e diversão em um só lugar.</p>
+    <p>
+        Obra “Operários” (1933), de Tarsila do Amaral:
+        <a href="https://commons.wikimedia.org/wiki/File:Oper%C3%A1rios%2C_Trasila_do_Amaral_-_1933.jpg"
+           target="_blank" rel="noopener noreferrer">
+            Wikimedia Commons
+        </a>
+    </p>
+    <a href="#topo">Voltar ao início ↑</a>
+</footer>
+
+<!-- MODAL DOS MINIGAMES -->
+
+<div class="modal" id="gameModal"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="modalTitle"
+     aria-describedby="modalDescription">
+
+    <div class="modal-box">
+        <button class="close-btn" id="closeButton"
+                aria-label="Fechar janela">×</button>
+
+        <div class="modal-icon" id="modalIcon" aria-hidden="true">🎨</div>
+        <h2 id="modalTitle">Nome do minigame</h2>
+        <p id="modalDescription"></p>
+        <p class="modal-status" id="modalStatus" aria-live="polite"></p>
+
+        <button class="start-btn" id="launchButton">
+            Começar desafio →
+        </button>
+
+        <button class="secondary-btn" id="backButton">
+            Voltar ao lobby
+        </button>
+    </div>
+</div>
+
+<script>
+"use strict";
+
+const games = [
+    {
+        name: "Acerte a Pintura",
+        icon: "🖼️",
+        description: "Observe uma pintura e escolha seu título entre várias alternativas. Descubra curiosidades a cada resposta.",
+        file: "acerte-pintura.html"
+    },
+    {
+        name: "Jogo da Memória",
+        icon: "🃏",
+        description: "Vire as cartas, encontre os pares e treine sua memória com elementos relacionados à arte modernista.",
+        file: "jogo-memoria.html"
+    },
+    {
+        name: "Quiz das Obras",
+        icon: "❓",
+        description: "Responda perguntas sobre a vida de Tarsila, suas pinturas e o Modernismo brasileiro.",
+        file: "quiz.html"
+    },
+    {
+        name: "Linha do Tempo",
+        icon: "📅",
+        description: "Descubra acontecimentos importantes e organize os eventos da trajetória de Tarsila em ordem cronológica.",
+        file: "linha-do-tempo.html"
+    },
+    {
+        name: "Pintura Quebrada",
+        icon: "🧩",
+        description: "Reorganize peças embaralhadas para reconstruir uma imagem inspirada na arte modernista.",
+        file: "pintura-quebrada.html"
+    },
+    {
+        name: "Detetive da Arte",
+        icon: "🔎",
+        description: "Analise pistas sobre uma obra misteriosa e tente descobrir a resposta.",
+        file: "detetive.html"
+    }
+];
+
+const modal = document.getElementById("gameModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalIcon = document.getElementById("modalIcon");
+const modalDescription = document.getElementById("modalDescription");
+const modalStatus = document.getElementById("modalStatus");
+const launchButton = document.getElementById("launchButton");
+const themeButton = document.getElementById("themeButton");
+
+let selectedGame = null;
+let lastFocusedElement = null;
+const visited = new Set();
+
+function readThemePreference() {
+    try {
+        return localStorage.getItem("jornada-theme");
+    } catch (error) {
+        return null;
+    }
+}
+
+function saveThemePreference(theme) {
+    try {
+        localStorage.setItem("jornada-theme", theme);
+    } catch (error) {
+        // O tema continua funcionando mesmo se o armazenamento estiver bloqueado.
+    }
+}
+
+function applyTheme(theme) {
+    const dark = theme === "dark";
+
+    document.body.classList.toggle("dark", dark);
+    themeButton.textContent = dark ? "☀" : "☾";
+    themeButton.setAttribute(
+        "aria-label",
+        dark ? "Ativar modo claro" : "Ativar modo escuro"
+    );
+    themeButton.setAttribute("aria-pressed", String(dark));
+    document.querySelector('meta[name="theme-color"]').content =
+        dark ? "#151e19" : "#f8f0df";
+
+    saveThemePreference(dark ? "dark" : "light");
+}
+
+function toggleTheme() {
+    applyTheme(
+        document.body.classList.contains("dark") ? "light" : "dark"
+    );
+}
+
+function updateProgress() {
+    const count = visited.size;
+    const percentage = (count / games.length) * 100;
+
+    document.getElementById("played").textContent = count;
+    document.getElementById("progress").style.width = percentage + "%";
+
+    const bar = document.getElementById("progressBar");
+    bar.setAttribute("aria-valuenow", count);
+}
+
+function openGame(index) {
+    if (!Number.isInteger(index) || !games[index]) {
+        return;
+    }
+
+    selectedGame = index;
+    lastFocusedElement = document.activeElement;
+
+    const game = games[index];
+
+    modalIcon.textContent = game.icon;
+    modalTitle.textContent = game.name;
+    modalDescription.textContent = game.description;
+    modalStatus.textContent = visited.has(index)
+        ? "Você já abriu este minigame antes."
+        : "Novo desafio disponível!";
+
+    launchButton.textContent = "Começar desafio →";
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
+
+    document.getElementById("closeButton").focus();
+}
+
+function closeModal() {
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+
+    if (lastFocusedElement && document.contains(lastFocusedElement)) {
+        lastFocusedElement.focus();
+    }
+}
+
+function launchGame() {
+    if (selectedGame === null || !games[selectedGame]) {
+        return;
+    }
+
+    const game = games[selectedGame];
+
+    visited.add(selectedGame);
+    updateProgress();
+
+    window.location.href = game.file;
+}
+
+function goToGames() {
+    document.getElementById("minigames").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function showAbout() {
+    document.getElementById("sobre").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+document.querySelectorAll("[data-game]").forEach(button => {
+    button.addEventListener("click", () => {
+        openGame(Number(button.dataset.game));
+    });
+});
+
+themeButton.addEventListener("click", toggleTheme);
+document.getElementById("startButton").addEventListener("click", goToGames);
+document.getElementById("aboutButton").addEventListener("click", showAbout);
+document.getElementById("closeButton").addEventListener("click", closeModal);
+document.getElementById("backButton").addEventListener("click", closeModal);
+launchButton.addEventListener("click", launchGame);
+
+modal.addEventListener("click", event => {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && modal.classList.contains("show")) {
+        closeModal();
+    }
+});
+
+applyTheme(readThemePreference() || "light");
+updateProgress();
+</script>
+
+</body>
+</html>

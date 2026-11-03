@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Memória | Jornada Modernista</title>
+
+  <style>
+    :root {
+      --verde: #183e2b;
+      --creme: #fff1d2;
+      --amarelo: #f5c653;
+      --rosa: #ed887d;
+      --azul: #8ccbd2;
+      --roxo: #b6a0d9;
+      --texto: #20352a;
+      --cartao: #ffffff;
+      --borda: #e6dfc9;
+      --sombra: 0 6px 18px #183e2b18;
+    }
+
+    body.escuro {
+      --verde: #b6d8b9;
+      --creme: #202c25;
+      --texto: #f3f4e9;
+      --cartao: #2d3b32;
+      --borda: #506657;
+      --sombra: 0 6px 18px #00000030;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: var(--texto);
+      background: var(--creme);
+      transition: background .25s, color .25s;
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 290px;
+      padding: 24px 7% 35px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background:
+        radial-gradient(circle at 86% 23%, var(--amarelo) 0 68px, transparent 70px),
+        radial-gradient(ellipse at 12% 100%, #e9a76e 0 100px, transparent 102px),
+        linear-gradient(160deg, #75b7d0, #a5c9bd 65%, #e8c989);
+      border-bottom: 7px solid var(--verde);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 270px;
+      height: 100px;
+      right: -35px;
+      bottom: -52px;
+      border-radius: 50%;
+      background: #2f7050;
+      pointer-events: none;
+    }
+
+    .voltar {
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 20px;
+      padding: 10px 17px;
+      color: white;
+      background: var(--verde);
+      text-decoration: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 0 #10291c;
+      font-weight: bold;
+    }
+
+    .voltar:hover {
+      background: #2e6545;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 4px 0 12px;
+      color: #183e2b;
+      font-family: Georgia, serif;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      text-shadow: 3px 3px 0 #ffffffa8;
+    }
+
+    header p {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #20352a;
+    }
+
+    main {
+      width: min(1000px, 92%);
+      margin: 30px auto 40px;
+    }
+
+    .painel {
+      padding: 20px;
+      margin-bottom: 24px;
+      background: var(--cartao);
+      border: 2px solid var(--borda);
+      border-radius: 20px;
+      box-shadow: var(--sombra);
+    }
+
+    .informacoes {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .estatisticas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .estatistica {
+      display: inline-block;
+      padding: 10px 14px;
+      background: #edf2e7;
+      color: #183e2b;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    body.escuro .estatistica {
+      background: #405448;
+      color: #f3f4e9;
+    }
+
+    .botoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .acao {
+      border: 0;
+      border-radius: 30px;
+      padding: 11px 17px;
+      color: white;
+      background: var(--verde);
+      font-weight: bold;
+      box-shadow: 0 4px 0 #10291c;
+      transition: transform .2s, background .2s;
+    }
+
+    .acao:hover {
+      background: #39744c;
+      transform: translateY(-2px);
+    }
+
+    .secundario {
+      color: var(--verde);
+      background: var(--amarelo);
+      box-shadow: 0 4px 0 #c59c32;
+    }
+
+    .secundario:hover {
+      background: #e8b842;
+    }
+
+    #mensagem {
+      min-height: 24px;
+      margin: 18px 0 0;
+      color: var(--verde);
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .tabuleiro {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .carta {
+      min-width: 0;
+      aspect-ratio: 4 / 5;
+      padding: 0;
+      border: 3px solid white;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--cartao);
+      box-shadow: var(--sombra);
+      position: relative;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .carta:nth-child(6n + 1) { background: var(--amarelo); }
+    .carta:nth-child(6n + 2) { background: var(--rosa); }
+    .carta:nth-child(6n + 3) { background: #91bd80; }
+    .carta:nth-child(6n + 4) { background: var(--roxo); }
+    .carta:nth-child(6n + 5) { background: var(--azul); }
+    .carta:nth-child(6n) { background: #edaa67; }
+
+    .carta:hover {
+      transform: translateY(-5px) rotate(-1deg);
+      box-shadow: 0 12px 25px #183e2b25;
+    }
+
+    .carta:focus-visible {
+      outline: 4px solid var(--verde);
+      outline-offset: 3px;
+    }
+
+    .carta.revelada,
+    .carta.combinada {
+      border-color: var(--amarelo);
+    }
+
+    .verso {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--verde);
+      background: inherit;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      position: relative;
+    }
+
+    .verso::before,
+    .verso::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #ffffff35;
+    }
+
+    .verso::before {
+      top: -28px;
+      right: -25px;
+    }
+
+    .verso::after {
+      bottom: -35px;
+      left: -25px;
+    }
+
+    .verso small {
+      font-size: .72rem;
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
+
+    .frente {
+      display: none;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      background: var(--cartao);
+    }
+
+    .carta.revelada .verso,
+    .carta.combinada .verso {
+      display: none;
+    }
+
+    .carta.revelada .frente,
+    .carta.combinada .frente {
+      display: flex;
+    }
+
+    .frente img {
+      width: 100%;
+      height: 76%;
+      object-fit: cover;
+      background: #e7d9bd;
+    }
+
+    .nome-obra {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      color: var(--verde);
+      font-size: clamp(.7rem, 1.8vw, .95rem);
+      font-weight: bold;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .carta.combinada {
+      border-color: #4d9560;
+    }
+
+    .carta.combinada::after {
+      content: "✓";
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #2e7d52;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+    }
+
+    .rodape {
+      text-align: center;
+      color: var(--texto);
+      opacity: .8;
+      font-size: .9rem;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 650px) {
+      .tabuleiro {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 11px;
+      }
+
+      .informacoes {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .estatisticas,
+      .botoes {
+        justify-content: center;
+      }
+
+      header {
+        min-height: 270px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .tabuleiro {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .painel {
+        padding: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="voltar" href="index.html">← Voltar ao início</a>
+    <h1>Jogo da Memória</h1>
+    <p>
+      Encontre os pares e conheça algumas obras de Tarsila do Amaral,
+      uma das grandes artistas do Modernismo brasileiro.
+    </p>
+  </header>
+
+  <main>
+    <section class="painel" aria-label="Informações da partida">
+      <div class="informacoes">
+        <div class="estatisticas">
+          <span class="estatistica">
+            Jogadas: <span id="jogadas">0</span>
+          </span>
+
+          <span class="estatistica">
+            Pares: <span id="pares">0</span>/10
+          </span>
+        </div>
+
+        <div class="botoes">
+          <button class="acao" id="reiniciar" type="button">
+            ↻ Reiniciar
+          </button>
+
+          <button
+            class="acao secundario"
+            id="tema"
+            type="button"
+            aria-pressed="false">
+            ☾ Modo escuro
+          </button>
+        </div>
+      </div>
+
+      <p id="mensagem" role="status" aria-live="polite">
+        Clique em duas cartas para encontrar um par.
+      </p>
+    </section>
+
+    <section
+      id="tabuleiro"
+      class="tabuleiro"
+      aria-label="Cartas do jogo da memória">
+    </section>
+
+    <p class="rodape">
+      Jornada Modernista • Aprender arte também pode ser divertido.
+    </p>
+  </main>
+
+  <script>
+    const obras = [
+      {
+        nome: "Abaporu",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/Abaporu.jpg"
+      },
+      {
+        nome: "A Cuca",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/A_Cuca.jpg"
+      },
+      {
+        nome: "Operários",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/Operarios.jpg"
+      },
+      {
+        nome: "Antropofagia",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/Antropofagia.jpg"
+      },
+      {
+        nome: "Sol Poente",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/Sol_poente.jpg"
+      },
+      {
+        nome: "A Lua",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/A_Lua.jpg"
+      },
+      {
+        nome: "A Negra",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/A_Negra.jpg"
+      },
+      {
+        nome: "O Mamoeiro",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/O_Mamoeiro.jpg"
+      },
+      {
+        nome: "EFCB",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/EFCB.jpg"
+      },
+      {
+        nome: "Carnaval em Madureira",
+        imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/Carnaval_em_Madureira.jpg"
+      }
+    ];
+
+    const tabuleiro = document.getElementById("tabuleiro");
+    const jogadasTexto = document.getElementById("jogadas");
+    const paresTexto = document.getElementById("pares");
+    const mensagem = document.getElementById("mensagem");
+    const botaoTema = document.getElementById("tema");
+
+    let primeiraCarta = null;
+    let segundaCarta = null;
+    let bloqueado = false;
+    let jogadas = 0;
+    let pares = 0;
+    let partidasId = 0;
+
+    function embaralhar(lista) {
+      const resultado = [...lista];
+
+      for (let i = resultado.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [resultado[i], resultado[j]] = [resultado[j], resultado[i]];
+      }
+
+      return resultado;
+    }
+
+    function criarCarta(obra) {
+      const carta = document.createElement("button");
+
+      carta.type = "button";
+      carta.className = "carta";
+      carta.dataset.nome = obra.nome;
+      carta.setAttribute("aria-label", "Carta fechada");
+
+      carta.innerHTML = `
+        <span class="verso" aria-hidden="true">
+          ✿
+          <small>ARTE</small>
+        </span>
+
+        <span class="frente">
+          <img src="${obra.imagem}" alt="" loading="lazy">
+          <span class="nome-obra">${obra.nome}</span>
+        </span>
+      `;
+
+      const imagem = carta.querySelector("img");
+
+      imagem.addEventListener("error", () => {
+        imagem.style.display = "none";
+
+        const emoji = document.createElement("div");
+        emoji.textContent = "🎨";
+        emoji.setAttribute("aria-hidden", "true");
+        emoji.style.cssText =
+          "height:76%;display:grid;place-items:center;font-size:3rem;background:#ead9c8;";
+
+        imagem.insertAdjacentElement("afterend", emoji);
+      }, { once: true });
+
+      carta.addEventListener("click", () => revelarCarta(carta));
+
+      return carta;
+    }
+
+    function iniciarJogo() {
+      partidasId++;
+      tabuleiro.innerHTML = "";
+
+      primeiraCarta = null;
+      segundaCarta = null;
+      bloqueado = false;
+      jogadas = 0;
+      pares = 0;
+
+      jogadasTexto.textContent = jogadas;
+      paresTexto.textContent = pares;
+      mensagem.textContent =
+        "Clique em duas cartas para encontrar um par.";
+
+      const cartas = embaralhar([...obras, ...obras]);
+
+      cartas.forEach(obra => {
+        tabuleiro.appendChild(criarCarta(obra));
+      });
+    }
+
+    function revelarCarta(carta) {
+      if (
+        bloqueado ||
+        carta === primeiraCarta ||
+        carta.classList.contains("combinada") ||
+        carta.classList.contains("revelada")
+      ) {
+        return;
+      }
+
+      carta.classList.add("revelada");
+      carta.setAttribute(
+        "aria-label",
+        "Obra revelada: " + carta.dataset.nome
+      );
+
+      if (!primeiraCarta) {
+        primeiraCarta = carta;
+        mensagem.textContent = "Agora escolha outra carta.";
+        return;
+      }
+
+      segundaCarta = carta;
+      jogadas++;
+      jogadasTexto.textContent = jogadas;
+
+      if (primeiraCarta.dataset.nome === segundaCarta.dataset.nome) {
+        primeiraCarta.classList.add("combinada");
+        segundaCarta.classList.add("combinada");
+
+        primeiraCarta.setAttribute(
+          "aria-label",
+          "Par encontrado: " + primeiraCarta.dataset.nome
+        );
+
+        segundaCarta.setAttribute(
+          "aria-label",
+          "Par encontrado: " + segundaCarta.dataset.nome
+        );
+
+        pares++;
+        paresTexto.textContent = pares;
+
+        limparSelecao();
+
+        if (pares === obras.length) {
+          mensagem.textContent =
+            "Parabéns! Você encontrou todos os pares em " +
+            jogadas + " jogadas!";
+        } else {
+          mensagem.textContent =
+            "Muito bem! Você encontrou o par de " +
+            carta.dataset.nome + ".";
+        }
+      } else {
+        bloqueado = true;
+        mensagem.textContent = "Não são iguais. Tente novamente!";
+
+        const idAtual = partidasId;
+
+        window.setTimeout(() => {
+          if (idAtual !== partidasId) {
+            return;
+          }
+
+          primeiraCarta.classList.remove("revelada");
+          segundaCarta.classList.remove("revelada");
+
+          primeiraCarta.setAttribute("aria-label", "Carta fechada");
+          segundaCarta.setAttribute("aria-label", "Carta fechada");
+
+          limparSelecao();
+        }, 900);
+      }
+    }
+
+    function limparSelecao() {
+      primeiraCarta = null;
+      segundaCarta = null;
+      bloqueado = false;
+    }
+
+    document
+      .getElementById("reiniciar")
+      .addEventListener("click", iniciarJogo);
+
+    botaoTema.addEventListener("click", () => {
+      document.body.classList.toggle("escuro");
+
+      const escuro = document.body.classList.contains("escuro");
+
+      botaoTema.textContent = escuro
+        ? "☀ Modo claro"
+        : "☾ Modo escuro";
+
+      botaoTema.setAttribute("aria-pressed", String(escuro));
+
+      try {
+        localStorage.setItem(
+          "jornadaTema",
+          escuro ? "escuro" : "claro"
+        );
+      } catch (e) {}
+    });
+
+    try {
+      if (localStorage.getItem("jornadaTema") === "escuro") {
+        document.body.classList.add("escuro");
+        botaoTema.textContent = "☀ Modo claro";
+        botaoTema.setAttribute("aria-pressed", "true");
+      }
+    } catch (e) {}
+
+    iniciarJogo();
+  </script>
+</body>
+</html>
