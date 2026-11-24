@@ -889,6 +889,341 @@
         .museum-heading h2 { font-size: 33px; }
     }
 
+    .museum-exhibition {
+    margin: 0 0 65px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.museum-heading {
+    padding: 44px 40px 26px;
+}
+
+.museum-heading h2 {
+    font: 500 clamp(29px, 3.7vw, 45px)/1.15 'Outfit', sans-serif;
+    margin: 12px 0 16px;
+}
+
+.museum-heading p {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.room-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    padding: 0 40px;
+}
+
+.room-tabs button {
+    padding: 11px 15px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: var(--surface);
+    border-radius: 30px;
+    font-size: 12px;
+}
+
+.room-tabs button.active {
+    background: var(--brand-green);
+    color: #fff;
+    border-color: var(--brand-green);
+}
+
+.room-count {
+    padding: 19px 40px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.museum-wall {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background: #e8e2d8;
+    border-top: 1px solid #d7d0c4;
+    gap: 1px;
+}
+
+.museum-piece {
+    position: relative;
+    appearance: none;
+    padding: 42px 32px 27px;
+    min-width: 0;
+    color: #253043;
+    background: radial-gradient(ellipse at 50% 0%, #fffef9 0%, #e9e3d8 72%);
+    border: 0;
+    border-bottom: 15px solid #cbbca5;
+    text-align: left;
+    cursor: zoom-in;
+}
+
+.museum-piece img {
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    background: #f9f6ef;
+    border: 9px solid #503e2e;
+    outline: 1px solid #b09b75;
+    padding: 8px;
+    box-shadow: 4px 15px 24px #44332235;
+    display: block;
+    transition: transform .3s;
+}
+
+.museum-piece:hover img {
+    transform: translateY(-4px);
+}
+
+.museum-piece .wall-label {
+    display: block;
+    background: #fffdf8;
+    border-left: 2px solid #c18b68;
+    padding: 12px 14px;
+    max-width: 270px;
+    margin: 25px auto 0;
+    box-shadow: 0 4px 8px #4532200a;
+}
+
+.wall-label strong {
+    display: block;
+    font: 500 19px 'Outfit', sans-serif;
+}
+
+.wall-label small {
+    font-size: 10px;
+    color: #667080;
+}
+
+.wall-label em {
+    display: block;
+    color: #946143;
+    font-size: 10px;
+    font-style: normal;
+    margin-top: 5px;
+}
+
+.exhibition-note {
+    padding: 22px 40px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+#art-dialog {
+    width: min(1180px, 96vw);
+    max-height: 94vh;
+    padding: 0;
+    margin: auto;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    color: var(--text);
+    background: var(--surface);
+    box-shadow: 0 25px 100px #0007;
+}
+
+#art-dialog::backdrop {
+    background: #07121ee6;
+    backdrop-filter: blur(8px);
+}
+
+.art-dialog-top,
+.art-dialog-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    gap: 15px;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.art-dialog-bottom {
+    border-top: 1px solid var(--border);
+    border-bottom: 0;
+}
+
+#art-dialog button {
+    border: 1px solid var(--border);
+    padding: 9px 14px;
+    border-radius: 8px;
+    background: var(--soft-bg);
+    color: var(--text);
+    font-size: 12px;
+}
+
+.art-dialog-layout {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+}
+
+.art-stage {
+    height: 62vh;
+    overflow: auto;
+    background: #e7e1d6;
+    padding: 20px;
+}
+
+.art-stage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: none;
+}
+
+.art-label {
+    padding: 30px;
+}
+
+.art-label h2 {
+    font: 500 33px/1.15 'Outfit', sans-serif;
+    margin: 10px 0;
+}
+
+.artist-name {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 24px;
+}
+
+#art-description {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.look-prompt {
+    background: var(--soft-bg);
+    padding: 16px;
+    border-radius: 10px;
+    margin: 22px 0;
+    font-size: 13px;
+}
+
+.look-prompt p {
+    margin-top: 8px;
+    line-height: 1.7;
+}
+
+.zoom-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+#art-zoom {
+    width: 100%;
+    margin: 14px 0;
+    accent-color: var(--brand-terracotta);
+}
+
+.zoom-hint {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+#art-source {
+    display: block;
+    margin-top: 22px;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+@media(max-width:700px) {
+    .museum-heading {
+        padding: 28px 22px 22px;
+    }
+
+    .room-tabs {
+        padding: 0 22px;
+    }
+
+    .room-count {
+        padding: 16px 22px;
+    }
+
+    .museum-wall {
+        grid-template-columns: 1fr;
+    }
+
+    .museum-piece {
+        padding: 30px 24px 20px;
+    }
+
+    .art-dialog-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .art-stage {
+        height: 43vh;
+    }
+
+    .art-label {
+        padding: 22px;
+    }
+
+    .exhibition-note {
+        padding: 22px;
+    }
+}
+
+
+/* Correções do museu virtual */
+#art-dialog {
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+.art-dialog-layout {
+    min-height: 0;
+}
+.art-stage {
+    min-width: 0;
+    min-height: 280px;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+.art-stage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    margin: 0 auto;
+}
+.art-label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.museum-piece:focus-visible,
+#art-dialog button:focus-visible,
+.room-tabs button:focus-visible {
+    outline: 3px solid var(--brand-terracotta);
+    outline-offset: 3px;
+}
+@media (max-width: 700px) {
+    #art-dialog {
+        width: 96vw;
+        max-height: 94dvh;
+    }
+    .art-stage {
+        height: 42dvh;
+        min-height: 220px;
+    }
+    .art-dialog-top,
+    .art-dialog-bottom {
+        position: sticky;
+        z-index: 2;
+        background: var(--surface);
+    }
+    .art-dialog-top { top: 0; }
+    .art-dialog-bottom { bottom: 0; }
+}
+
 </style>
 </head>
 
@@ -918,7 +1253,7 @@
                 Iniciar a visita <span aria-hidden="true">→</span>
             </button>
             <span class="hero-note">Uma visita no seu ritmo. Explore as obras e descubra novos detalhes.</span>
-            <div class="hero-chips"><span>✦ 06 obras em exposição</span><span>◈ Salas temáticas</span><span>↗ Amplie cada obra</span></div>
+            <div class="hero-chips"><span>✦ 04 obras em exposição</span><span>◈ Salas temáticas</span><span>↗ Amplie cada obra</span></div>
         </div>
 
         <div class="portrait-wrap">
@@ -947,28 +1282,68 @@
 
 
 <section class="museum-exhibition" id="acervo" aria-labelledby="exhibit-title">
-<div class="museum-heading"><span class="eyebrow">A exposição · Seis olhares</span><h2 id="exhibit-title">Uma obra. Muitas descobertas.</h2><p>Escolha uma sala e toque em um quadro para observar a imagem inteira e conhecer sua história.</p></div>
-<div class="room-tabs" role="group" aria-label="Salas da exposição"><button class="active" data-room="all" aria-pressed="true">Todo o acervo</button><button data-room="retratos" aria-pressed="false">01 · Retratos</button><button data-room="imaginario" aria-pressed="false">02 · Paisagens e imaginário</button><button data-room="social" aria-pressed="false">03 · Olhar social</button></div>
-<p id="room-count" aria-live="polite" class="room-count">6 obras em exposição</p>
-<div class="museum-wall" id="museum-wall"></div>
-<p class="exhibition-note">Seleção educativa de reproduções do Acervo Artístico-Cultural dos Palácios do Governo de São Paulo. Este é um museu virtual escolar, sem vínculo institucional com o acervo.</p>
+    <div class="museum-heading">
+        <span class="eyebrow">A exposição · Quatro olhares</span>
+        <h2 id="exhibit-title">Uma obra. Muitas descobertas.</h2>
+        <p>Escolha uma sala e toque em um quadro para observar a imagem inteira e conhecer sua história.</p>
+    </div>
+
+    <div class="room-tabs" role="group" aria-label="Salas da exposição">
+        <button class="active" data-room="all" aria-pressed="true">Todo o acervo</button>
+        <button data-room="retratos" aria-pressed="false">01 · Retratos</button>
+        <button data-room="imaginario" aria-pressed="false">02 · Paisagens e imaginário</button>
+        <button data-room="social" aria-pressed="false">03 · Olhar social</button>
+    </div>
+
+    <p id="room-count" aria-live="polite" class="room-count">4 obras em exposição</p>
+
+    <div class="museum-wall" id="museum-wall"></div>
+
+    <p class="exhibition-note">
+        Seleção educativa de reproduções do Acervo Artístico-Cultural dos Palácios do Governo de São Paulo.
+        Este é um museu virtual escolar, sem vínculo institucional com o acervo.
+    </p>
 </section>
 
-    <section class="welcome">
-        <div>
-            <div class="eyebrow">O museu também é lugar de brincar</div>
-            <h2>Depois da visita, experimente.</h2>
-            <p>Escolha uma experiência e descubra um novo olhar sobre a arte.</p>
+<dialog id="art-dialog" aria-labelledby="art-title">
+    <div class="art-dialog-top">
+        <span>OBSERVAR A OBRA</span>
+        <button id="art-close" aria-label="Fechar obra">Fechar ×</button>
+    </div>
+
+    <div class="art-dialog-layout">
+        <div class="art-stage" id="art-stage">
+            <img id="art-image" alt="">
         </div>
 
-        <div class="progress-card">
-            <strong>🏆 Progresso da Jornada</strong>
-            <p><span id="played">0</span> de 4 experiências visitadas</p>
-            <div class="progress-bar" id="progressBar">
-                <div class="progress-fill" id="progress"></div>
+        <div class="art-label">
+            <span id="art-date" class="eyebrow"></span>
+            <h2 id="art-title"></h2>
+            <p class="artist-name">Tarsila do Amaral</p>
+            <p id="art-description"></p>
+
+            <div class="look-prompt">
+                <strong>Experimente observar</strong>
+                <p id="art-question"></p>
             </div>
+
+            <label class="zoom-label" for="art-zoom">
+                Ampliação <output id="zoom-value">100%</output>
+            </label>
+
+            <input type="range" id="art-zoom" min="100" max="250" step="25" value="100">
+
+            <p class="zoom-hint">Ao ampliar, use as barras de rolagem para explorar a imagem.</p>
+            <a id="art-source" target="_blank" rel="noopener noreferrer">Ver no acervo de origem ↗</a>
         </div>
-    </section>
+    </div>
+
+    <div class="art-dialog-bottom">
+        <button id="art-prev">← Anterior</button>
+        <span id="art-position" aria-live="polite"></span>
+        <button id="art-next">Próxima →</button>
+    </div>
+</dialog>
 
     <section id="minigames">
         <div class="section-heading">
@@ -1140,28 +1515,267 @@ try { applyTheme(localStorage.getItem("jornada-theme") || "light"); } catch (e) 
 </script>
 
 
+
+
+<!-- VLibras: avatar 3D -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
-(()=>{
-const metadata=[
-{title:'Operários',year:'1933',room:'social',page:'Operarios',description:'Uma multidão de rostos ocupa a frente da composição, enquanto fábricas aparecem ao fundo. A obra permite pensar na diversidade da população e nas transformações da vida urbana e do trabalho.',question:'Como a repetição dos rostos e a presença das chaminés mudam sua leitura da cena?'},
-{title:'Calmaria II',year:'1929',room:'imaginario',page:'Calmaria',description:'Formas geométricas organizam uma paisagem de atmosfera silenciosa. Observe como os volumes e os espaços entre eles constroem a sensação de distância.',question:'Quais formas parecem familiares? Quais fazem a paisagem parecer imaginada?'},
-{title:'Autorretrato',year:'1924',room:'retratos',page:'Autorretrato',description:'Ao representar a si mesma, Tarsila também constrói uma imagem de sua presença como artista. O retrato convida a observar pose, expressão e escolhas de cor.',question:'Que impressão a postura e o olhar da artista transmitem a você?'},
-{title:'Retrato de Mário de Andrade',year:'1922',room:'retratos',page:'Retratos',description:'O escritor Mário de Andrade participou do círculo modernista de Tarsila. Esse retrato é um ponto de encontro entre artes visuais, literatura e as relações do modernismo brasileiro.',question:'Observe as pinceladas: quais partes do rosto recebem mais destaque?'},
-{title:'Religião Brasileira I',year:'1927',room:'imaginario',page:'Religiao',description:'A religiosidade integra o repertório cultural observado pela artista. A composição abre espaço para reconhecer objetos, cores e referências do cotidiano brasileiro.',question:'Que elementos aproximam a pintura de um ambiente doméstico?'},
-{title:'Estratosfera',year:'1947',room:'imaginario',page:'Estratosfera',description:'Nesta obra de uma etapa posterior de sua trajetória, o título convida a imaginar espaços além do cotidiano. Formas e relações espaciais tornam-se caminhos para explorar a imagem.',question:'Que sensação de espaço ou movimento você encontra nesta composição?'}
-];
-const sources=[...document.querySelectorAll('.artwork-cover img')];
-metadata.forEach((w,i)=>w.src=sources[i].src);
-const wall=document.getElementById('museum-wall'),dialog=document.getElementById('art-dialog'),zoom=document.getElementById('art-zoom');
-let filtered=metadata.map((_,i)=>i),current=0,lastFocus=null;
-function render(){wall.replaceChildren();filtered.forEach(i=>{const w=metadata[i],button=document.createElement('button');button.className='museum-piece';button.setAttribute('aria-label','Observar '+w.title+', '+w.year);const img=document.createElement('img');img.src=w.src;img.alt=w.title;img.loading='lazy';const label=document.createElement('span');label.className='wall-label';label.innerHTML='<strong>'+w.title+'</strong><small>Tarsila do Amaral · '+w.year+'</small><em>Observar a obra ↗</em>';button.append(img,label);button.onclick=()=>{lastFocus=button;current=filtered.indexOf(i);show();dialog.showModal();document.body.style.overflow='hidden';};wall.append(button);});document.getElementById('room-count').textContent=filtered.length+' obras em exposição';}
-function show(){const w=metadata[filtered[current]];document.getElementById('art-image').src=w.src;document.getElementById('art-image').alt=w.title+', de Tarsila do Amaral';document.getElementById('art-title').textContent=w.title;document.getElementById('art-date').textContent=w.year;document.getElementById('art-description').textContent=w.description;document.getElementById('art-question').textContent=w.question;document.getElementById('art-source').href='https://www.acervo.sp.gov.br/Tarsila/'+w.page;document.getElementById('art-position').textContent=(current+1)+' / '+filtered.length;zoom.value=100;zoom.dispatchEvent(new Event('input'));document.getElementById('art-stage').scrollTo(0,0);}
-zoom.oninput=()=>{const image=document.getElementById('art-image');image.style.width=zoom.value+'%';image.style.height=zoom.value+'%';document.getElementById('zoom-value').textContent=zoom.value+'%';};
-document.getElementById('art-close').onclick=()=>dialog.close();dialog.addEventListener('close',()=>{document.body.style.overflow='';lastFocus?.focus();});
-function move(n){current=(current+n+filtered.length)%filtered.length;show();}
-document.getElementById('art-prev').onclick=()=>move(-1);document.getElementById('art-next').onclick=()=>move(1);
-dialog.addEventListener('keydown',e=>{if(e.target===zoom)return;if(e.key==='ArrowRight'){e.preventDefault();move(1);}if(e.key==='ArrowLeft'){e.preventDefault();move(-1);}});
-document.querySelectorAll('[data-room]').forEach(button=>button.onclick=()=>{document.querySelectorAll('[data-room]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});filtered=metadata.flatMap((w,i)=>button.dataset.room==='all'||w.room===button.dataset.room?[i]:[]);render();});render();
+    new window.VLibras.Widget({
+        rootPath: 'https://vlibras.gov.br/app',
+        avatar: 'icaro',
+        position: 'R'
+    });
+</script>
+
+
+
+<script>
+(() => {
+    "use strict";
+
+    const museum = document.getElementById("acervo");
+    if (!museum || museum.dataset.initialized === "true") return;
+    museum.dataset.initialized = "true";
+
+    const wall = document.getElementById("museum-wall");
+    const dialog = document.getElementById("art-dialog");
+    const zoom = document.getElementById("art-zoom");
+    const artImage = document.getElementById("art-image");
+    const artStage = document.getElementById("art-stage");
+    const roomCount = document.getElementById("room-count");
+    const roomButtons = [...museum.querySelectorAll("[data-room]")];
+
+    if (!wall || !dialog || !zoom || !artImage || !artStage || !roomCount) {
+        console.error("Museu: não foi possível localizar todos os elementos necessários.");
+        return;
+    }
+
+    /*
+      O index possui quatro imagens nos cards dos minigames.
+      O museu utiliza essas mesmas imagens, evitando depender de arquivos
+      externos ou de imagens que não existem no HTML.
+    */
+    const sourceImages = [...document.querySelectorAll(".artwork-cover img")];
+
+    const works = [
+        {
+            title: "Operários",
+            year: "1933",
+            room: "social",
+            description: "A composição reúne numerosos rostos diante de fábricas e chaminés. A obra permite observar a diversidade da população e refletir sobre o trabalho, a industrialização e a vida urbana.",
+            question: "Como a repetição dos rostos e a presença das fábricas influenciam sua interpretação da cena?"
+        },
+        {
+            title: "Calmaria II",
+            year: "1929",
+            room: "imaginario",
+            description: "A pintura apresenta uma paisagem organizada por formas e cores. Observe como os elementos da composição criam uma atmosfera própria e conduzem o olhar.",
+            question: "Quais formas e cores mais chamam sua atenção? Que sensação a paisagem transmite?"
+        },
+        {
+            title: "Autorretrato",
+            year: "1924",
+            room: "retratos",
+            description: "No autorretrato, Tarsila representa a própria imagem e constrói uma forma de apresentar sua identidade como artista. Observe a expressão, a postura e as escolhas visuais.",
+            question: "Que impressão a expressão e a postura da artista transmitem?"
+        },
+        {
+            title: "Retrato de Mário de Andrade",
+            year: "1922",
+            room: "retratos",
+            description: "O retrato representa o escritor Mário de Andrade, importante nome do modernismo brasileiro e integrante do círculo artístico e intelectual próximo a Tarsila.",
+            question: "Quais características do rosto e da composição recebem maior destaque?"
+        }
+    ];
+
+    // Associa cada obra à imagem correspondente já presente no index.
+    const availableWorks = works
+        .map((work, index) => {
+            const source = sourceImages[index];
+            const imageSource = source
+                ? source.getAttribute("src") || source.currentSrc || source.src
+                : "";
+
+            return imageSource ? { ...work, image: imageSource } : null;
+        })
+        .filter(Boolean);
+
+    if (availableWorks.length === 0) {
+        wall.textContent = "Não foi possível carregar as imagens do acervo.";
+        roomCount.textContent = "Nenhuma obra disponível";
+        console.error("Museu: nenhuma imagem .artwork-cover img foi encontrada.");
+        return;
+    }
+
+    let activeRoom = "all";
+    let visibleWorks = [...availableWorks];
+    let currentIndex = 0;
+    let lastFocusedElement = null;
+
+    const titleElement = document.getElementById("art-title");
+    const dateElement = document.getElementById("art-date");
+    const descriptionElement = document.getElementById("art-description");
+    const questionElement = document.getElementById("art-question");
+    const positionElement = document.getElementById("art-position");
+    const zoomValue = document.getElementById("zoom-value");
+    const sourceLink = document.getElementById("art-source");
+
+    function updateCount() {
+        const total = visibleWorks.length;
+        roomCount.textContent = total === 1
+            ? "1 obra em exposição"
+            : `${total} obras em exposição`;
+    }
+
+    function renderGallery() {
+        wall.replaceChildren();
+
+        visibleWorks.forEach((work, index) => {
+            const card = document.createElement("button");
+            card.type = "button";
+            card.className = "museum-piece";
+            card.setAttribute("aria-label", `Observar ${work.title}, ${work.year}`);
+
+            const image = document.createElement("img");
+            image.src = work.image;
+            image.alt = work.title;
+            image.loading = "lazy";
+
+            const label = document.createElement("span");
+            label.className = "wall-label";
+
+            const title = document.createElement("strong");
+            title.textContent = work.title;
+
+            const date = document.createElement("small");
+            date.textContent = `Tarsila do Amaral · ${work.year}`;
+
+            const action = document.createElement("em");
+            action.textContent = "Observar a obra ↗";
+
+            label.append(title, date, action);
+            card.append(image, label);
+
+            card.addEventListener("click", () => {
+                lastFocusedElement = card;
+                currentIndex = index;
+                showWork();
+                if (!dialog.open) dialog.showModal();
+            });
+
+            wall.append(card);
+        });
+
+        updateCount();
+    }
+
+    function updateZoom() {
+        const percentage = Number(zoom.value);
+        artImage.style.width = `${percentage}%`;
+        artImage.style.height = "auto";
+        zoomValue.textContent = `${percentage}%`;
+    }
+
+    function showWork() {
+        if (!visibleWorks.length) return;
+
+        const work = visibleWorks[currentIndex];
+
+        artImage.src = work.image;
+        artImage.alt = `${work.title}, de Tarsila do Amaral`;
+        titleElement.textContent = work.title;
+        dateElement.textContent = work.year;
+        descriptionElement.textContent = work.description;
+        questionElement.textContent = work.question;
+        positionElement.textContent = `${currentIndex + 1} / ${visibleWorks.length}`;
+
+        // Link para a página geral do acervo, sem montar endereços específicos não verificados.
+        sourceLink.href = "https://www.acervo.sp.gov.br/Tarsila/ObrasTarsila";
+        sourceLink.textContent = "Consultar o acervo de origem ↗";
+
+        zoom.value = "100";
+        updateZoom();
+        artStage.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+
+    function moveWork(direction) {
+        if (visibleWorks.length < 2) return;
+
+        currentIndex = (
+            currentIndex + direction + visibleWorks.length
+        ) % visibleWorks.length;
+
+        showWork();
+    }
+
+    function filterWorks(room) {
+        activeRoom = room;
+        visibleWorks = room === "all"
+            ? [...availableWorks]
+            : availableWorks.filter(work => work.room === room);
+
+        roomButtons.forEach(button => {
+            const selected = button.dataset.room === activeRoom;
+            button.classList.toggle("active", selected);
+            button.setAttribute("aria-pressed", String(selected));
+        });
+
+        currentIndex = 0;
+        renderGallery();
+    }
+
+    roomButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            filterWorks(button.dataset.room);
+        });
+    });
+
+    document.getElementById("art-close").addEventListener("click", () => {
+        if (dialog.open) dialog.close();
+    });
+
+    document.getElementById("art-prev").addEventListener("click", () => {
+        moveWork(-1);
+    });
+
+    document.getElementById("art-next").addEventListener("click", () => {
+        moveWork(1);
+    });
+
+    zoom.addEventListener("input", updateZoom);
+
+    dialog.addEventListener("keydown", event => {
+        if (event.target === zoom) return;
+
+        if (event.key === "ArrowRight") {
+            event.preventDefault();
+            moveWork(1);
+        } else if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            moveWork(-1);
+        }
+    });
+
+    dialog.addEventListener("click", event => {
+        // Permite fechar ao clicar na área escura fora do conteúdo do diálogo.
+        if (event.target === dialog) dialog.close();
+    });
+
+    dialog.addEventListener("close", () => {
+        if (lastFocusedElement && lastFocusedElement.isConnected) {
+            lastFocusedElement.focus();
+        }
+        lastFocusedElement = null;
+    });
+
+    renderGallery();
 })();
 </script>
 
