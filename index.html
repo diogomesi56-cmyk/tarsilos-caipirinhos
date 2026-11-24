@@ -1475,8 +1475,6 @@ function closeModal() { modal.classList.remove("show"); }
 
 function launchGame() {
     if (selectedGame !== null) {
-        visited.add(selectedGame);
-        updateProgress();
         window.location.href = games[selectedGame].file;
     }
 }
